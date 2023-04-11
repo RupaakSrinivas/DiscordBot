@@ -9,8 +9,8 @@ api_key = os.getenv('API_KEY')
 openai.api_key = api_key
 messages = [ {"role": "system", "content": "You are a intelligent assistent."} ]
 
-
-while True:
+message = ""
+while message != "quit":
     message = input("User : ")
     if message:
         messages.append(
