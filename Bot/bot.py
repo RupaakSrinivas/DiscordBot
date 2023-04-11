@@ -26,7 +26,7 @@ def run_discord_bot():
     async def on_ready():
         print(f'{client.user} is now running')
 
-    @client.event()
+    @client.event
     async def on_message(message):
         if message.author == client.user:
             return 
