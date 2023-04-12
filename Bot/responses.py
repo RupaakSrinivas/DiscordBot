@@ -21,8 +21,8 @@ def get_response(message):
      #   return help.help(args)
     elif command == "remindme":
         reminder.remindme(message, args)
-        return 
     elif command == "remindall":
         return reminder.remind(args)
     else:
         return "Invalid command, use \help to learn more..."
+    return

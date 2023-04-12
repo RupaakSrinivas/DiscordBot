@@ -2,6 +2,7 @@ import discord
 import responses
 import os
 from dotenv import load_dotenv
+import asyncio
 
 load_dotenv()
 
@@ -16,6 +17,9 @@ async def send_message(message, is_private):
             await message.channel.send(response)
     except Exception as e:
         print(e)
+async def remind_me(message,reminder, time):
+    await asyncio.sleep(time)
+    await message.channel.send(reminder)
 
 def run_discord_bot():
     intents = discord.Intents.default()
