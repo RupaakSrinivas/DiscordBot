@@ -1,15 +1,23 @@
 import random
 import ChatGPTAPI
+import reminder
+#import help
 
 def get_response(message):
     prefix = '\\'
-    if message[0] == prefix:
-        p_message = (message.lower())[1:]
+    user_message = str(message.content)
+    if user_message[0] == prefix:
+        command, *args = message.content[len(prefix):].split()
+        print(command, args)
     else:
         return
-    if p_message[0:4] == 'chat':
-        return str(ChatGPTAPI.get_message(p_message[4:]))
-    elif p_message == "roll":
+    if command == "roll":
         return str(random.randint(1,6))
+    elif command == "hello":
+        return "Hello !"
+    elif command == "chatgpt":
+        return ChatGPTAPI.get_message(" ".join(args))
+    #elif command == "help":
+     #   return help.help(args)
     else:
-        return "Can not understand"
+        return "Invalid command, use \help to learn more..."
