@@ -10,11 +10,12 @@ token = os.getenv('TOKEN')
 
 async def send_message(message, is_private):
     try:
-        response = responses.get_response(message)
-        if is_private:
-            await message.author.send(response)
-        else:
-            await message.channel.send(response)
+        async with message.channel.typing() :
+            response = responses.get_response(message)
+            if is_private:
+                await message.author.send(response)
+            else:
+                await message.channel.send(response)
     except Exception as e:
         print(e)
 async def remind_me(message,reminder, time):
